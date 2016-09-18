@@ -20,17 +20,17 @@ module testDecoder ();
 
     initial begin
 
-    $display("En A0 A1| O0 O1 O2 O3 | Expected Output");
-	`SET(0,0,0); `DISP("All false")
-	`SET(0,0,1); `DISP("All false")
-	`SET(0,1,0); `DISP("All false")
-	`SET(0,1,1); `DISP("All false")
+		$display("En A0 A1| O0 O1 O2 O3 | Expected Output");
+		`SET(0,0,0); `DISP("All false")
+		`SET(0,0,1); `DISP("All false")
+		`SET(0,1,0); `DISP("All false")
+		`SET(0,1,1); `DISP("All false")
 
-	`SET(1,0,0); `DISP("O0 Only")
-	`SET(1,0,1); `DISP("O1 Only")
-	`SET(1,1,0); `DISP("O2 Only")
-	`SET(1,1,1); `DISP("O3 Only")
+		`SET(1,0,0); `DISP("O0 Only")
+		`SET(1,0,1); `DISP("O1 Only")
+		`SET(1,1,0); `DISP("O2 Only")
+		`SET(1,1,1); `DISP("O3 Only")
 
-    end
+	end
 
 endmodule
