@@ -1,0 +1,141 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x112b900 .scope module, "testMultiplexer" "testMultiplexer" 2 5;
+ .timescale -9 -12;
+v0x1166b70_0 .var "addr0", 0 0;
+v0x1166c40_0 .var "addr1", 0 0;
+v0x1166d10_0 .net "bout", 0 0, L_0x1167360; 1 drivers
+v0x1166d90_0 .var "in0", 0 0;
+v0x1166e60_0 .var "in1", 0 0;
+v0x1166f30_0 .var "in2", 0 0;
+v0x1167000_0 .var "in3", 0 0;
+v0x11670d0_0 .net "sout", 0 0, L_0x1167ca0; 1 drivers
+v0x11671a0_0 .var "v", 6 0;
+S_0x11664d0 .scope module, "bmultiplexer" "behavioralMultiplexer" 2 13, 3 8, S_0x112b900;
+ .timescale -9 -12;
+v0x11665c0_0 .net "address", 1 0, L_0x11672c0; 1 drivers
+v0x1166680_0 .net "address0", 0 0, v0x1166b70_0; 1 drivers
+v0x1166700_0 .net "address1", 0 0, v0x1166c40_0; 1 drivers
+v0x11667b0_0 .net "in0", 0 0, v0x1166d90_0; 1 drivers
+v0x1166890_0 .net "in1", 0 0, v0x1166e60_0; 1 drivers
+v0x1166940_0 .net "in2", 0 0, v0x1166f30_0; 1 drivers
+v0x11669c0_0 .net "in3", 0 0, v0x1167000_0; 1 drivers
+v0x1166a70_0 .net "inputs", 3 0, L_0x1167220; 1 drivers
+v0x1166af0_0 .alias "out", 0 0, v0x1166d10_0;
+L_0x1167220 .concat [ 1 1 1 1], v0x1166d90_0, v0x1166e60_0, v0x1166f30_0, v0x1167000_0;
+L_0x11672c0 .concat [ 1 1 0 0], v0x1166b70_0, v0x1166c40_0;
+L_0x1167360 .part/v L_0x1167220, L_0x11672c0, 1;
+S_0x112af70 .scope module, "multiplexer" "structuralMultiplexer" 2 14, 3 21, S_0x112b900;
+ .timescale -9 -12;
+L_0x1166200/d .functor NOT 1, v0x1166b70_0, C4<0>, C4<0>, C4<0>;
+L_0x1166200 .delay (50000,50000,50000) L_0x1166200/d;
+L_0x1167580/d .functor NOT 1, v0x1166c40_0, C4<0>, C4<0>, C4<0>;
+L_0x1167580 .delay (50000,50000,50000) L_0x1167580/d;
+L_0x11676b0/d .functor AND 1, v0x1167000_0, v0x1166b70_0, v0x1166c40_0, C4<1>;
+L_0x11676b0 .delay (50000,50000,50000) L_0x11676b0/d;
+L_0x11677e0/d .functor AND 1, v0x1166e60_0, v0x1166b70_0, L_0x1167580, C4<1>;
+L_0x11677e0 .delay (50000,50000,50000) L_0x11677e0/d;
+L_0x1167970/d .functor AND 1, v0x1166f30_0, L_0x1166200, v0x1166c40_0, C4<1>;
+L_0x1167970 .delay (50000,50000,50000) L_0x1167970/d;
+L_0x1167b00/d .functor AND 1, v0x1166d90_0, L_0x1166200, L_0x1167580, C4<1>;
+L_0x1167b00 .delay (50000,50000,50000) L_0x1167b00/d;
+L_0x1167ca0/d .functor OR 1, L_0x1167b00, L_0x11677e0, L_0x1167970, L_0x11676b0;
+L_0x1167ca0 .delay (50000,50000,50000) L_0x1167ca0/d;
+v0x11513d0_0 .alias "address0", 0 0, v0x1166680_0;
+v0x1165be0_0 .alias "address1", 0 0, v0x1166700_0;
+v0x1165c80_0 .alias "in0", 0 0, v0x11667b0_0;
+v0x1165d20_0 .alias "in1", 0 0, v0x1166890_0;
+v0x1165dd0_0 .alias "in2", 0 0, v0x1166940_0;
+v0x1165e70_0 .alias "in3", 0 0, v0x11669c0_0;
+v0x1165f50_0 .net "naddress0", 0 0, L_0x1166200; 1 drivers
+v0x1165ff0_0 .net "naddress1", 0 0, L_0x1167580; 1 drivers
+v0x11660e0_0 .alias "out", 0 0, v0x11670d0_0;
+v0x1166180_0 .net "out0", 0 0, L_0x1167b00; 1 drivers
+v0x1166280_0 .net "out1", 0 0, L_0x11677e0; 1 drivers
+v0x1166320_0 .net "out2", 0 0, L_0x1167970; 1 drivers
+v0x1166430_0 .net "out3", 0 0, L_0x11676b0; 1 drivers
+    .scope S_0x112b900;
+T_0 ;
+    %vpi_call 2 19 "$dumpfile", "multiplexer_trace.vcd";
+    %vpi_call 2 20 "$dumpvars";
+    %vpi_call 2 21 "$dumpall";
+    %vpi_call 2 23 "$display", "i0 i1 i2 i3 |A0 A1|out expected_output";
+    %set/v v0x11671a0_0, 0, 7;
+T_0.0 ;
+    %load/v 8, v0x11671a0_0, 7;
+   %cmpi/u 8, 63, 7;
+    %or 5, 4, 1;
+    %jmp/0xz T_0.1, 5;
+    %load/v 8, v0x11671a0_0, 1; Only need 1 of 7 bits
+; Save base=8 wid=1 in lookaside.
+    %set/v v0x1166d90_0, 8, 1;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_0.2, 4;
+    %load/x1p 8, v0x11671a0_0, 1;
+    %jmp T_0.3;
+T_0.2 ;
+    %mov 8, 2, 1;
+T_0.3 ;
+; Save base=8 wid=1 in lookaside.
+    %set/v v0x1166e60_0, 8, 1;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_0.4, 4;
+    %load/x1p 8, v0x11671a0_0, 1;
+    %jmp T_0.5;
+T_0.4 ;
+    %mov 8, 2, 1;
+T_0.5 ;
+; Save base=8 wid=1 in lookaside.
+    %set/v v0x1166f30_0, 8, 1;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_0.6, 4;
+    %load/x1p 8, v0x11671a0_0, 1;
+    %jmp T_0.7;
+T_0.6 ;
+    %mov 8, 2, 1;
+T_0.7 ;
+; Save base=8 wid=1 in lookaside.
+    %set/v v0x1167000_0, 8, 1;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_0.8, 4;
+    %load/x1p 8, v0x11671a0_0, 1;
+    %jmp T_0.9;
+T_0.8 ;
+    %mov 8, 2, 1;
+T_0.9 ;
+; Save base=8 wid=1 in lookaside.
+    %set/v v0x1166b70_0, 8, 1;
+    %ix/load 1, 5, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_0.10, 4;
+    %load/x1p 8, v0x11671a0_0, 1;
+    %jmp T_0.11;
+T_0.10 ;
+    %mov 8, 2, 1;
+T_0.11 ;
+; Save base=8 wid=1 in lookaside.
+    %set/v v0x1166c40_0, 8, 1;
+    %delay 1000000, 0;
+    %vpi_call 2 28 "$display", " %b  %b  %b  %b | %b  %b| %b         %b", v0x1166d90_0, v0x1166e60_0, v0x1166f30_0, v0x1167000_0, v0x1166b70_0, v0x1166c40_0, v0x11670d0_0, v0x1166d10_0;
+    %load/v 8, v0x11671a0_0, 7;
+    %mov 15, 0, 25;
+    %addi 8, 1, 32;
+    %set/v v0x11671a0_0, 8, 7;
+    %jmp T_0.0;
+T_0.1 ;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "multiplexer.t.v";
+    "./multiplexer.v";

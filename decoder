@@ -1,0 +1,111 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x21a7f40 .scope module, "behavioralDecoder" "behavioralDecoder" 2 7;
+ .timescale -9 -12;
+v0x21aa280_0 .net *"_s11", 3 0, L_0x21c9570; 1 drivers
+v0x21c7be0_0 .net *"_s5", 3 0, L_0x21c92c0; 1 drivers
+v0x21c7c80_0 .net *"_s8", 2 0, C4<000>; 1 drivers
+v0x21c7d20_0 .net *"_s9", 1 0, L_0x21c9430; 1 drivers
+v0x21c7dd0_0 .net "address0", 0 0, C4<z>; 0 drivers
+v0x21c7e70_0 .net "address1", 0 0, C4<z>; 0 drivers
+v0x21c7f50_0 .net "enable", 0 0, C4<z>; 0 drivers
+v0x21c7ff0_0 .net "out0", 0 0, L_0x21c9130; 1 drivers
+v0x21c80e0_0 .net "out1", 0 0, L_0x21c9090; 1 drivers
+v0x21c8180_0 .net "out2", 0 0, L_0x21c8f70; 1 drivers
+v0x21c8280_0 .net "out3", 0 0, L_0x21c8e70; 1 drivers
+L_0x21c8e70 .part L_0x21c9570, 3, 1;
+L_0x21c8f70 .part L_0x21c9570, 2, 1;
+L_0x21c9090 .part L_0x21c9570, 1, 1;
+L_0x21c9130 .part L_0x21c9570, 0, 1;
+L_0x21c92c0 .concat [ 1 3 0 0], C4<z>, C4<000>;
+L_0x21c9430 .concat [ 1 1 0 0], C4<z>, C4<z>;
+L_0x21c9570 .shift/l 4, L_0x21c92c0, L_0x21c9430;
+S_0x21a8030 .scope module, "testDecoder" "testDecoder" 3 5;
+ .timescale -9 -12;
+v0x21c89b0_0 .var "addr0", 0 0;
+v0x21c8a50_0 .var "addr1", 0 0;
+v0x21c8b00_0 .var "enable", 0 0;
+v0x21c8bb0_0 .net "out0", 0 0, L_0x21c98e0; 1 drivers
+v0x21c8c90_0 .net "out1", 0 0, L_0x21c9ac0; 1 drivers
+v0x21c8d40_0 .net "out2", 0 0, L_0x21c9bb0; 1 drivers
+v0x21c8dc0_0 .net "out3", 0 0, L_0x21c9ce0; 1 drivers
+S_0x21c8320 .scope module, "decoder" "structuralDecoder" 3 11, 2 18, S_0x21a8030;
+ .timescale -9 -12;
+L_0x21c96b0/d .functor NOT 1, v0x21c89b0_0, C4<0>, C4<0>, C4<0>;
+L_0x21c96b0 .delay (50000,50000,50000) L_0x21c96b0/d;
+L_0x21c97f0/d .functor NOT 1, v0x21c8a50_0, C4<0>, C4<0>, C4<0>;
+L_0x21c97f0 .delay (50000,50000,50000) L_0x21c97f0/d;
+L_0x21c98e0/d .functor AND 1, L_0x21c96b0, L_0x21c97f0, v0x21c8b00_0, C4<1>;
+L_0x21c98e0 .delay (50000,50000,50000) L_0x21c98e0/d;
+L_0x21c9ac0/d .functor AND 1, v0x21c89b0_0, L_0x21c97f0, v0x21c8b00_0, C4<1>;
+L_0x21c9ac0 .delay (50000,50000,50000) L_0x21c9ac0/d;
+L_0x21c9bb0/d .functor AND 1, L_0x21c96b0, v0x21c8a50_0, v0x21c8b00_0, C4<1>;
+L_0x21c9bb0 .delay (50000,50000,50000) L_0x21c9bb0/d;
+L_0x21c9ce0/d .functor AND 1, v0x21c89b0_0, v0x21c8a50_0, v0x21c8b00_0, C4<1>;
+L_0x21c9ce0 .delay (50000,50000,50000) L_0x21c9ce0/d;
+v0x21c8410_0 .net "address0", 0 0, v0x21c89b0_0; 1 drivers
+v0x21c84d0_0 .net "address1", 0 0, v0x21c8a50_0; 1 drivers
+v0x21c8570_0 .net "enable", 0 0, v0x21c8b00_0; 1 drivers
+v0x21c8610_0 .net "naddress0", 0 0, L_0x21c96b0; 1 drivers
+v0x21c8690_0 .net "naddress1", 0 0, L_0x21c97f0; 1 drivers
+v0x21c8730_0 .alias "out0", 0 0, v0x21c8bb0_0;
+v0x21c87d0_0 .alias "out1", 0 0, v0x21c8c90_0;
+v0x21c8870_0 .alias "out2", 0 0, v0x21c8d40_0;
+v0x21c8910_0 .alias "out3", 0 0, v0x21c8dc0_0;
+    .scope S_0x21a8030;
+T_0 ;
+    %vpi_call 3 16 "$dumpfile", "decoder_trace.vcd";
+    %vpi_call 3 17 "$dumpvars";
+    %vpi_call 3 19 "$display", "En A0 A1| O0 O1 O2 O3 | Expected Output";
+    %set/v v0x21c8b00_0, 0, 1;
+    %set/v v0x21c89b0_0, 0, 1;
+    %set/v v0x21c8a50_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 21 "$display", "%b  %b  %b |  %b  %b  %b  %b | All false", v0x21c8b00_0, v0x21c89b0_0, v0x21c8a50_0, v0x21c8bb0_0, v0x21c8c90_0, v0x21c8d40_0, v0x21c8dc0_0;
+    %set/v v0x21c8b00_0, 0, 1;
+    %set/v v0x21c89b0_0, 1, 1;
+    %set/v v0x21c8a50_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 23 "$display", "%b  %b  %b |  %b  %b  %b  %b | All false", v0x21c8b00_0, v0x21c89b0_0, v0x21c8a50_0, v0x21c8bb0_0, v0x21c8c90_0, v0x21c8d40_0, v0x21c8dc0_0;
+    %set/v v0x21c8b00_0, 0, 1;
+    %set/v v0x21c89b0_0, 0, 1;
+    %set/v v0x21c8a50_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 25 "$display", "%b  %b  %b |  %b  %b  %b  %b | All false", v0x21c8b00_0, v0x21c89b0_0, v0x21c8a50_0, v0x21c8bb0_0, v0x21c8c90_0, v0x21c8d40_0, v0x21c8dc0_0;
+    %set/v v0x21c8b00_0, 0, 1;
+    %set/v v0x21c89b0_0, 1, 1;
+    %set/v v0x21c8a50_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 27 "$display", "%b  %b  %b |  %b  %b  %b  %b | All false", v0x21c8b00_0, v0x21c89b0_0, v0x21c8a50_0, v0x21c8bb0_0, v0x21c8c90_0, v0x21c8d40_0, v0x21c8dc0_0;
+    %set/v v0x21c8b00_0, 1, 1;
+    %set/v v0x21c89b0_0, 0, 1;
+    %set/v v0x21c8a50_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 29 "$display", "%b  %b  %b |  %b  %b  %b  %b | O0 Only", v0x21c8b00_0, v0x21c89b0_0, v0x21c8a50_0, v0x21c8bb0_0, v0x21c8c90_0, v0x21c8d40_0, v0x21c8dc0_0;
+    %set/v v0x21c8b00_0, 1, 1;
+    %set/v v0x21c89b0_0, 1, 1;
+    %set/v v0x21c8a50_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 31 "$display", "%b  %b  %b |  %b  %b  %b  %b | O1 Only", v0x21c8b00_0, v0x21c89b0_0, v0x21c8a50_0, v0x21c8bb0_0, v0x21c8c90_0, v0x21c8d40_0, v0x21c8dc0_0;
+    %set/v v0x21c8b00_0, 1, 1;
+    %set/v v0x21c89b0_0, 0, 1;
+    %set/v v0x21c8a50_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 33 "$display", "%b  %b  %b |  %b  %b  %b  %b | O2 Only", v0x21c8b00_0, v0x21c89b0_0, v0x21c8a50_0, v0x21c8bb0_0, v0x21c8c90_0, v0x21c8d40_0, v0x21c8dc0_0;
+    %set/v v0x21c8b00_0, 1, 1;
+    %set/v v0x21c89b0_0, 1, 1;
+    %set/v v0x21c8a50_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 35 "$display", "%b  %b  %b |  %b  %b  %b  %b | O3 Only", v0x21c8b00_0, v0x21c89b0_0, v0x21c8a50_0, v0x21c8bb0_0, v0x21c8c90_0, v0x21c8d40_0, v0x21c8dc0_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "./decoder.v";
+    "decoder.t.v";
