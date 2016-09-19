@@ -1,0 +1,104 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xf2afe0 .scope module, "behavioralFullAdder" "behavioralFullAdder" 2 7;
+ .timescale -9 -12;
+v0xf2bf50_0 .net *"_s10", 0 0, C4<0>; 1 drivers
+v0xf47a30_0 .net *"_s11", 1 0, L_0xf491d0; 1 drivers
+v0xf47ad0_0 .net *"_s13", 1 0, L_0xf493e0; 1 drivers
+v0xf47b70_0 .net *"_s16", 0 0, C4<0>; 1 drivers
+v0xf47c20_0 .net *"_s17", 1 0, L_0xf49550; 1 drivers
+v0xf47cc0_0 .net *"_s3", 1 0, L_0xf48ec0; 1 drivers
+v0xf47da0_0 .net *"_s6", 0 0, C4<0>; 1 drivers
+v0xf47e40_0 .net *"_s7", 1 0, L_0xf49010; 1 drivers
+v0xf47f30_0 .net "a", 0 0, C4<z>; 0 drivers
+v0xf47fd0_0 .net "b", 0 0, C4<z>; 0 drivers
+v0xf480d0_0 .net "carryin", 0 0, C4<z>; 0 drivers
+v0xf48170_0 .net "carryout", 0 0, L_0xf48ca0; 1 drivers
+v0xf48280_0 .net "sum", 0 0, L_0xf48da0; 1 drivers
+L_0xf48ca0 .part L_0xf49550, 1, 1;
+L_0xf48da0 .part L_0xf49550, 0, 1;
+L_0xf48ec0 .concat [ 1 1 0 0], C4<z>, C4<0>;
+L_0xf49010 .concat [ 1 1 0 0], C4<z>, C4<0>;
+L_0xf491d0 .arith/sum 2, L_0xf48ec0, L_0xf49010;
+L_0xf493e0 .concat [ 1 1 0 0], C4<z>, C4<0>;
+L_0xf49550 .arith/sum 2, L_0xf491d0, L_0xf493e0;
+S_0xf2b0d0 .scope module, "testFullAdder" "testFullAdder" 3 5;
+ .timescale -9 -12;
+v0xf48910_0 .var "a", 0 0;
+v0xf489b0_0 .var "b", 0 0;
+v0xf48a60_0 .var "carryin", 0 0;
+v0xf48b10_0 .net "carryout", 0 0, L_0xf49940; 1 drivers
+v0xf48bf0_0 .net "sum", 0 0, L_0xf49730; 1 drivers
+S_0xf48320 .scope module, "adder" "structuralFullAdder" 3 9, 2 19, S_0xf2b0d0;
+ .timescale -9 -12;
+L_0xf48050 .functor XOR 1, v0xf48910_0, v0xf489b0_0, C4<0>, C4<0>;
+L_0xf49730 .functor XOR 1, L_0xf48050, v0xf48a60_0, C4<0>, C4<0>;
+L_0xf49880 .functor AND 1, L_0xf48050, v0xf48a60_0, C4<1>, C4<1>;
+L_0xf498e0 .functor AND 1, v0xf48910_0, v0xf489b0_0, C4<1>, C4<1>;
+L_0xf49940 .functor OR 1, L_0xf49880, L_0xf498e0, C4<0>, C4<0>;
+v0xf48410_0 .net "a", 0 0, v0xf48910_0; 1 drivers
+v0xf484d0_0 .net "b", 0 0, v0xf489b0_0; 1 drivers
+v0xf48570_0 .net "c1", 0 0, L_0xf49880; 1 drivers
+v0xf48610_0 .net "c2", 0 0, L_0xf498e0; 1 drivers
+v0xf48690_0 .net "carryin", 0 0, v0xf48a60_0; 1 drivers
+v0xf48730_0 .alias "carryout", 0 0, v0xf48b10_0;
+v0xf487d0_0 .net "s1", 0 0, L_0xf48050; 1 drivers
+v0xf48870_0 .alias "sum", 0 0, v0xf48bf0_0;
+    .scope S_0xf2b0d0;
+T_0 ;
+    %vpi_call 3 12 "$dumpfile", "adder.vcd";
+    %vpi_call 3 13 "$dumpvars";
+    %delay 200000, 0;
+    %vpi_call 3 15 "$display", "A B C | Cout Sum | Expected Output";
+    %set/v v0xf48910_0, 0, 1;
+    %set/v v0xf489b0_0, 0, 1;
+    %set/v v0xf48a60_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 17 "$display", "%b %b %b | %b%b | 00", v0xf48910_0, v0xf489b0_0, v0xf48a60_0, v0xf48b10_0, v0xf48bf0_0;
+    %set/v v0xf48910_0, 0, 1;
+    %set/v v0xf489b0_0, 0, 1;
+    %set/v v0xf48a60_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 19 "$display", "%b %b %b | %b%b | 01", v0xf48910_0, v0xf489b0_0, v0xf48a60_0, v0xf48b10_0, v0xf48bf0_0;
+    %set/v v0xf48910_0, 0, 1;
+    %set/v v0xf489b0_0, 1, 1;
+    %set/v v0xf48a60_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 21 "$display", "%b %b %b | %b%b | 01", v0xf48910_0, v0xf489b0_0, v0xf48a60_0, v0xf48b10_0, v0xf48bf0_0;
+    %set/v v0xf48910_0, 0, 1;
+    %set/v v0xf489b0_0, 1, 1;
+    %set/v v0xf48a60_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 23 "$display", "%b %b %b | %b%b | 10", v0xf48910_0, v0xf489b0_0, v0xf48a60_0, v0xf48b10_0, v0xf48bf0_0;
+    %set/v v0xf48910_0, 1, 1;
+    %set/v v0xf489b0_0, 0, 1;
+    %set/v v0xf48a60_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 25 "$display", "%b %b %b | %b%b | 01", v0xf48910_0, v0xf489b0_0, v0xf48a60_0, v0xf48b10_0, v0xf48bf0_0;
+    %set/v v0xf48910_0, 1, 1;
+    %set/v v0xf489b0_0, 0, 1;
+    %set/v v0xf48a60_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 27 "$display", "%b %b %b | %b%b | 10", v0xf48910_0, v0xf489b0_0, v0xf48a60_0, v0xf48b10_0, v0xf48bf0_0;
+    %set/v v0xf48910_0, 1, 1;
+    %set/v v0xf489b0_0, 1, 1;
+    %set/v v0xf48a60_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 29 "$display", "%b %b %b | %b%b | 10", v0xf48910_0, v0xf489b0_0, v0xf48a60_0, v0xf48b10_0, v0xf48bf0_0;
+    %set/v v0xf48910_0, 1, 1;
+    %set/v v0xf489b0_0, 1, 1;
+    %set/v v0xf48a60_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 31 "$display", "%b %b %b | %b%b | 11", v0xf48910_0, v0xf489b0_0, v0xf48a60_0, v0xf48b10_0, v0xf48bf0_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "./adder.v";
+    "adder.t.v";
