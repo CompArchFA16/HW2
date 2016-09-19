@@ -15,7 +15,7 @@ En A0 A1| O0 O1 O2 O3 | Expected Output
 1  0  1 |  0  0  1  0 | O2 Only
 1  1  1 |  0  0  0  1 | O3 Only
 </pre>
-### Timing Digram
+### timing diagram
 ![Timing Diagram1](decoder_timingdiagram.png)
 
 
@@ -89,7 +89,7 @@ i0 i1 i2 i3 |A0 A1|out expected_output
  0  1  1  1 | 1  1| 1         1
  1  1  1  1 | 1  1| 1         1
 </pre>
-### Timing Digram
+### timing diagram
 ![Timing Diagram2](multiplexer_timingdiagram.png)
 
 
@@ -108,5 +108,5 @@ Full Adder         Expected
  0 1  1  | 0   1    0   1
  1 1  1  | 1   1    1   1
 </pre>
-### Timing Digram
-![Timing Diagram3](fulladder_timingdiagram.png)
+### timing diagram
+![Timing Diagram3](adder_timingdiagram.png)
