@@ -6,9 +6,25 @@ module testFullAdder();
     reg a, b, carryin;
     wire sum, carryout;
 
-    behavioralFullAdder adder (sum, carryout, a, b, carryin);
+    structuralFullAdder adder (sum, carryout, a, b, carryin);
 
     initial begin
-        // Your test code here
+        $display("A B C | Cout Sum | Expected Output");
+	a=0; b=0; carryin=0; #1000
+	$display("%b %b %b | %b%b | 00", a, b, carryin, carryout, sum);
+	a=0; b=0; carryin=1; #1000
+	$display("%b %b %b | %b%b | 01", a, b, carryin, carryout, sum);
+	a=0; b=1; carryin=0; #1000
+	$display("%b %b %b | %b%b | 01", a, b, carryin, carryout, sum);
+	a=0; b=1; carryin=1; #1000
+	$display("%b %b %b | %b%b | 10", a, b, carryin, carryout, sum);
+	a=1; b=0; carryin=0; #1000
+	$display("%b %b %b | %b%b | 01", a, b, carryin, carryout, sum);
+	a=1; b=0; carryin=1; #1000
+	$display("%b %b %b | %b%b | 10", a, b, carryin, carryout, sum);
+	a=1; b=1; carryin=0; #1000
+	$display("%b %b %b | %b%b | 10", a, b, carryin, carryout, sum);
+	a=1; b=1; carryin=1; #1000
+	$display("%b %b %b | %b%b | 11", a, b, carryin, carryout, sum);
     end
 endmodule
