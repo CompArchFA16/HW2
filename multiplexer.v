@@ -12,12 +12,17 @@ module behavioralMultiplexer
     assign out = inputs[address];
 endmodule
 
+`include "twoInputMultiplexer.v"
 
 module structuralMultiplexer
 (
-    output out,
-    input address0, address1,
-    input in0, in1, in2, in3
+  output out,
+  input address0, address1,
+  input in0, in1, in2, in3
 );
-    // Your multiplexer code here
+
+  wire topOut, bottomOut;
+  twoInputMultiplexer top(address0, in0, in1, topOut);
+  twoInputMultiplexer bottom(address0, in2, in3, bottomOut);
+  twoInputMultiplexer merge(address1, topOut, bottomOut, out);
 endmodule
