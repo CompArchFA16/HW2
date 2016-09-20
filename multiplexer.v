@@ -21,4 +21,3 @@ module structuralMultiplexer
 );
     // Your multiplexer code here
 endmodule
-
