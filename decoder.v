@@ -1,3 +1,10 @@
+`define NOT not #50
+`define AND and #50
+`define NAND nand #50
+`define OR or #50
+`define NOR nor #50
+`define XOR xor #50
+
 // Decoder circuit
 
 module behavioralDecoder
@@ -9,12 +16,6 @@ module behavioralDecoder
     // Uses concatenation and shift operators
     assign {out3,out2,out1,out0}=enable<<{address1,address0};
 endmodule
-
-
-// define gates with delays
-`define AND and #50
-`define OR or #50
-`define NOT not #50
 
 module structuralDecoder
 (

@@ -1,3 +1,10 @@
+`define NOT not #50
+`define AND and #50
+`define NAND nand #50
+`define OR or #50
+`define NOR nor #50
+`define XOR xor #50
+
 // Adder circuit
 
 module behavioralFullAdder
@@ -24,19 +31,19 @@ module structuralFullAdder
   // CARRY =====================================================================
 
   wire aXorB;
-  xor (aXorB, a, b);
+  `XOR (aXorB, a, b);
 
   wire cAndAXorB;
-  and (cAndAXorB, carryin, aXorB);
+  `AND (cAndAXorB, carryin, aXorB);
 
   wire aAndB;
-  and (aAndB, a, b);
+  `AND (aAndB, a, b);
 
   // carryOut = ab + c(a xor b)
-  or (carryout, aAndB, cAndAXorB);
+  `OR (carryout, aAndB, cAndAXorB);
 
   // SUM =======================================================================
 
   // sum = a xor b xor c
-  xor (sum, aXorB, carryin);
+  `XOR (sum, aXorB, carryin);
 endmodule

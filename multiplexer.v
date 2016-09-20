@@ -1,3 +1,10 @@
+`define NOT not #50
+`define AND and #50
+`define NAND nand #50
+`define OR or #50
+`define NOR nor #50
+`define XOR xor #50
+
 // Multiplexer circuit
 
 module behavioralMultiplexer
