@@ -6,9 +6,14 @@ module testFullAdder();
   reg a, b, carryin;
   wire sum, carryout;
 
-  behavioralFullAdder dut(sum, carryout, a, b, carryin);
+  // behavioralFullAdder dut(sum, carryout, a, b, carryin);
+  structuralFullAdder dut(sum, carryout, a, b, carryin);
 
   initial begin
+
+    $dumpfile("adder.vcd");
+    $dumpvars;
+
     $display("a b cIn | Sum cOut | expCOut expSum");
     a = 0; b = 0; carryin = 0; #1000
     $display("%b %b   %b |   %b    %b |       0      0", a, b, carryin, sum, carryout);
