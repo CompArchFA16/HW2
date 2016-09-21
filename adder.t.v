@@ -11,37 +11,37 @@ module testFullAdder();
 
     initial begin
     // 0 + 0
-    $display("a b cin | sum cout");
+    $display("a b cin | sum cout | Expected ");
     a=0;b=0;carryin=0; #1000
-    $display("%b %b %b   | %b   %b", a, b, carryin, sum, carryout);
+    $display("%b %b %b   | %b   %b    | 0  0", a, b, carryin, sum, carryout);
 
     // 1 + 0
     a=1;b=0;carryin=0; #1000
-    $display("%b %b %b   | %b   %b", a, b, carryin, sum, carryout);
+    $display("%b %b %b   | %b   %b    | 1  0", a, b, carryin, sum, carryout);
 
     // 0 + 1
     a=0;b=1;carryin=0; #1000
-    $display("%b %b %b   | %b   %b", a, b, carryin, sum, carryout);
+    $display("%b %b %b   | %b   %b    | 1  0", a, b, carryin, sum, carryout);
 
     // 1 + 1
     a=1;b=1;carryin=0; #1000
-    $display("%b %b %b   | %b   %b", a, b, carryin, sum, carryout);
+    $display("%b %b %b   | %b   %b    | 0  1", a, b, carryin, sum, carryout);
 
     // 0 + 0 (+ 1)
     a=0;b=0;carryin=1; #1000
-    $display("%b %b %b   | %b   %b", a, b, carryin, sum, carryout);
+    $display("%b %b %b   | %b   %b    | 1  0", a, b, carryin, sum, carryout);
 
     // 1 + 0 (+ 1)
     a=1;b=0;carryin=1; #1000
-    $display("%b %b %b   | %b   %b", a, b, carryin, sum, carryout);
+    $display("%b %b %b   | %b   %b    | 0  1", a, b, carryin, sum, carryout);
 
     // 0 + 1 (+ 1)
     a=0;b=1;carryin=1; #1000
-    $display("%b %b %b   | %b   %b", a, b, carryin, sum, carryout);
+    $display("%b %b %b   | %b   %b    | 0  1", a, b, carryin, sum, carryout);
 
     // 1 + 1 (+ 1)
     a=1;b=1;carryin=1; #1000
-    $display("%b %b %b   | %b   %b", a, b, carryin, sum, carryout);
+    $display("%b %b %b   | %b   %b    | 1  1", a, b, carryin, sum, carryout);
 
     end
 endmodule
