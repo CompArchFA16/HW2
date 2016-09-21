@@ -28,6 +28,8 @@ A0 A1 | in0 in1 in2 in3 | out | Expected
 1  1  | x   x   x   0   | 0   | 0
 ```
 
+![Multiplexer](multiplexer.png)
+
 Adder:
 
 ```
@@ -41,3 +43,4 @@ a b cin | sum cout | Expected
 0 1 1   | 0   1    | 0  1
 1 1 1   | 1   1    | 1  1
 ```
+![Adder](adder.png)
