@@ -1,0 +1,93 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1c16fe0 .scope module, "structuralFullAdder" "structuralFullAdder" 2 15;
+ .timescale -9 -12;
+v0x1c18b20_0 .net "a", 0 0, C4<z>; 0 drivers
+v0x1c31ce0_0 .net "b", 0 0, C4<z>; 0 drivers
+v0x1c31d80_0 .net "carryin", 0 0, C4<z>; 0 drivers
+v0x1c31e20_0 .net "carryout", 0 0, C4<z>; 0 drivers
+v0x1c31ed0_0 .net "sum", 0 0, C4<z>; 0 drivers
+S_0x1c170d0 .scope module, "testFullAdder" "testFullAdder" 3 5;
+ .timescale -9 -12;
+v0x1c32a10_0 .var "a", 0 0;
+v0x1c32ab0_0 .var "b", 0 0;
+v0x1c32b60_0 .var "carryin", 0 0;
+v0x1c32c10_0 .net "carryout", 0 0, L_0x1c32da0; 1 drivers
+v0x1c32cf0_0 .net "sum", 0 0, L_0x1c32e40; 1 drivers
+S_0x1c31f70 .scope module, "adder" "behavioralFullAdder" 3 9, 2 3, S_0x1c170d0;
+ .timescale -9 -12;
+v0x1c32060_0 .net *"_s10", 0 0, C4<0>; 1 drivers
+v0x1c32120_0 .net *"_s11", 1 0, L_0x1c33240; 1 drivers
+v0x1c321c0_0 .net *"_s13", 1 0, L_0x1c33450; 1 drivers
+v0x1c32260_0 .net *"_s16", 0 0, C4<0>; 1 drivers
+v0x1c32310_0 .net *"_s17", 1 0, L_0x1c33610; 1 drivers
+v0x1c323b0_0 .net *"_s3", 1 0, L_0x1c32f80; 1 drivers
+v0x1c32490_0 .net *"_s6", 0 0, C4<0>; 1 drivers
+v0x1c32530_0 .net *"_s7", 1 0, L_0x1c330c0; 1 drivers
+v0x1c32620_0 .net "a", 0 0, v0x1c32a10_0; 1 drivers
+v0x1c326c0_0 .net "b", 0 0, v0x1c32ab0_0; 1 drivers
+v0x1c327c0_0 .net "carryin", 0 0, v0x1c32b60_0; 1 drivers
+v0x1c32860_0 .alias "carryout", 0 0, v0x1c32c10_0;
+v0x1c32970_0 .alias "sum", 0 0, v0x1c32cf0_0;
+L_0x1c32da0 .part L_0x1c33610, 1, 1;
+L_0x1c32e40 .part L_0x1c33610, 0, 1;
+L_0x1c32f80 .concat [ 1 1 0 0], v0x1c32a10_0, C4<0>;
+L_0x1c330c0 .concat [ 1 1 0 0], v0x1c32ab0_0, C4<0>;
+L_0x1c33240 .arith/sum 2, L_0x1c32f80, L_0x1c330c0;
+L_0x1c33450 .concat [ 1 1 0 0], v0x1c32b60_0, C4<0>;
+L_0x1c33610 .arith/sum 2, L_0x1c33240, L_0x1c33450;
+    .scope S_0x1c170d0;
+T_0 ;
+    %vpi_call 3 13 "$display", "A  B  C_in|  S  C_out";
+    %set/v v0x1c32a10_0, 0, 1;
+    %set/v v0x1c32ab0_0, 0, 1;
+    %set/v v0x1c32b60_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 15 "$display", "%b  %b   %b  |  %b  %b", v0x1c32a10_0, v0x1c32ab0_0, v0x1c32b60_0, v0x1c32cf0_0, v0x1c32c10_0;
+    %set/v v0x1c32a10_0, 1, 1;
+    %set/v v0x1c32ab0_0, 0, 1;
+    %set/v v0x1c32b60_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 17 "$display", "%b  %b   %b  |  %b  %b", v0x1c32a10_0, v0x1c32ab0_0, v0x1c32b60_0, v0x1c32cf0_0, v0x1c32c10_0;
+    %set/v v0x1c32a10_0, 0, 1;
+    %set/v v0x1c32ab0_0, 1, 1;
+    %set/v v0x1c32b60_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 19 "$display", "%b  %b   %b  |  %b  %b", v0x1c32a10_0, v0x1c32ab0_0, v0x1c32b60_0, v0x1c32cf0_0, v0x1c32c10_0;
+    %set/v v0x1c32a10_0, 0, 1;
+    %set/v v0x1c32ab0_0, 0, 1;
+    %set/v v0x1c32b60_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 21 "$display", "%b  %b   %b  |  %b  %b", v0x1c32a10_0, v0x1c32ab0_0, v0x1c32b60_0, v0x1c32cf0_0, v0x1c32c10_0;
+    %set/v v0x1c32a10_0, 1, 1;
+    %set/v v0x1c32ab0_0, 1, 1;
+    %set/v v0x1c32b60_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 23 "$display", "%b  %b   %b  |  %b  %b", v0x1c32a10_0, v0x1c32ab0_0, v0x1c32b60_0, v0x1c32cf0_0, v0x1c32c10_0;
+    %set/v v0x1c32a10_0, 1, 1;
+    %set/v v0x1c32ab0_0, 0, 1;
+    %set/v v0x1c32b60_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 25 "$display", "%b  %b   %b  |  %b  %b", v0x1c32a10_0, v0x1c32ab0_0, v0x1c32b60_0, v0x1c32cf0_0, v0x1c32c10_0;
+    %set/v v0x1c32a10_0, 0, 1;
+    %set/v v0x1c32ab0_0, 1, 1;
+    %set/v v0x1c32b60_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 27 "$display", "%b  %b   %b  |  %b  %b", v0x1c32a10_0, v0x1c32ab0_0, v0x1c32b60_0, v0x1c32cf0_0, v0x1c32c10_0;
+    %set/v v0x1c32a10_0, 1, 1;
+    %set/v v0x1c32ab0_0, 1, 1;
+    %set/v v0x1c32b60_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 29 "$display", "%b  %b   %b  |  %b  %b", v0x1c32a10_0, v0x1c32ab0_0, v0x1c32b60_0, v0x1c32cf0_0, v0x1c32c10_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "./adder.v";
+    "adder.t.v";
