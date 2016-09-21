@@ -11,6 +11,11 @@ module testMultiplexer ();
     //structuralMultiplexer mult (out, address0, address1, in0, in1, in2, in3);
 
     initial begin
+
+    // DumpTrace
+    $dumpfile("multiplexer.vcd");
+    $dumpvars;
+
     in0=1'bx;in1=1'bx;in2=1'bx;in3=1'bx; #1000
 
     // in0
