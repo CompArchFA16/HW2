@@ -2,7 +2,7 @@
 `timescale 1 ns / 1 ps
 `include "decoder.v"
 
-`define SET(ve,va0,va1) \
+`define SET(ve,va1,va0) \
 enable=ve;addr0=va0;addr1=va1; #1000
 
 `define STR(x) `"x`"
