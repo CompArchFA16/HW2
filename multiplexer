@@ -1,0 +1,117 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x20f6d10 .scope module, "structuralMultiplexer" "structuralMultiplexer" 2 16;
+ .timescale -9 -12;
+v0x211aa30_0 .net "address0", 0 0, C4<z>; 0 drivers
+v0x2139fd0_0 .net "address1", 0 0, C4<z>; 0 drivers
+v0x213a070_0 .net "in0", 0 0, C4<z>; 0 drivers
+v0x213a110_0 .net "in1", 0 0, C4<z>; 0 drivers
+v0x213a1c0_0 .net "in2", 0 0, C4<z>; 0 drivers
+v0x213a260_0 .net "in3", 0 0, C4<z>; 0 drivers
+v0x213a340_0 .net "out", 0 0, C4<z>; 0 drivers
+S_0x20f67c0 .scope module, "testMultiplexer" "testMultiplexer" 3 5;
+ .timescale -9 -12;
+v0x213ab00_0 .var "addr0", 0 0;
+v0x213aba0_0 .var "addr1", 0 0;
+v0x213ac50_0 .var "in0", 0 0;
+v0x213ad00_0 .var "in1", 0 0;
+v0x213ade0_0 .var "in2", 0 0;
+v0x213ae90_0 .var "in3", 0 0;
+v0x213af10_0 .net "out", 0 0, L_0x213b340; 1 drivers
+S_0x213a3e0 .scope module, "multiplexer" "behavioralMultiplexer" 3 10, 2 3, S_0x20f67c0;
+ .timescale -9 -12;
+v0x213a4d0_0 .net "address", 1 0, L_0x213b200; 1 drivers
+v0x213a590_0 .net "address0", 0 0, v0x213ab00_0; 1 drivers
+v0x213a630_0 .net "address1", 0 0, v0x213aba0_0; 1 drivers
+v0x213a6d0_0 .net "in0", 0 0, v0x213ac50_0; 1 drivers
+v0x213a750_0 .net "in1", 0 0, v0x213ad00_0; 1 drivers
+v0x213a7f0_0 .net "in2", 0 0, v0x213ade0_0; 1 drivers
+v0x213a8d0_0 .net "in3", 0 0, v0x213ae90_0; 1 drivers
+v0x213a970_0 .net "inputs", 3 0, L_0x213afc0; 1 drivers
+v0x213aa60_0 .alias "out", 0 0, v0x213af10_0;
+L_0x213afc0 .concat [ 1 1 1 1], v0x213ac50_0, v0x213ad00_0, v0x213ade0_0, v0x213ae90_0;
+L_0x213b200 .concat [ 1 1 0 0], v0x213ab00_0, v0x213aba0_0;
+L_0x213b340 .part/v L_0x213afc0, L_0x213b200, 1;
+    .scope S_0x20f67c0;
+T_0 ;
+    %set/v v0x213ae90_0, 2, 1;
+    %set/v v0x213ade0_0, 2, 1;
+    %set/v v0x213ad00_0, 2, 1;
+    %set/v v0x213ac50_0, 2, 1;
+    %vpi_call 3 15 "$display", "addr0 addr1 | in3 in2 in1 in0 | Out | Expected Output";
+    %set/v v0x213ab00_0, 0, 1;
+    %set/v v0x213aba0_0, 0, 1;
+    %set/v v0x213ae90_0, 2, 1;
+    %set/v v0x213ade0_0, 2, 1;
+    %set/v v0x213ad00_0, 2, 1;
+    %set/v v0x213ac50_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 18 "$display", "  %b    %b    |   %b   %b   %b   %b |  %b  | 0", v0x213ab00_0, v0x213aba0_0, v0x213ae90_0, v0x213ade0_0, v0x213ad00_0, v0x213ac50_0, v0x213af10_0;
+    %set/v v0x213ab00_0, 0, 1;
+    %set/v v0x213aba0_0, 0, 1;
+    %set/v v0x213ae90_0, 2, 1;
+    %set/v v0x213ade0_0, 2, 1;
+    %set/v v0x213ad00_0, 2, 1;
+    %set/v v0x213ac50_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 21 "$display", "  %b    %b    |   %b   %b   %b   %b |  %b  | 1", v0x213ab00_0, v0x213aba0_0, v0x213ae90_0, v0x213ade0_0, v0x213ad00_0, v0x213ac50_0, v0x213af10_0;
+    %set/v v0x213ab00_0, 0, 1;
+    %set/v v0x213aba0_0, 1, 1;
+    %set/v v0x213ae90_0, 2, 1;
+    %set/v v0x213ade0_0, 2, 1;
+    %set/v v0x213ad00_0, 0, 1;
+    %set/v v0x213ac50_0, 2, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 24 "$display", "  %b    %b    |   %b   %b   %b   %b |  %b  | 0", v0x213ab00_0, v0x213aba0_0, v0x213ae90_0, v0x213ade0_0, v0x213ad00_0, v0x213ac50_0, v0x213af10_0;
+    %set/v v0x213ab00_0, 0, 1;
+    %set/v v0x213aba0_0, 1, 1;
+    %set/v v0x213ae90_0, 2, 1;
+    %set/v v0x213ade0_0, 2, 1;
+    %set/v v0x213ad00_0, 1, 1;
+    %set/v v0x213ac50_0, 2, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 27 "$display", "  %b    %b    |   %b   %b   %b   %b |  %b  | 1", v0x213ab00_0, v0x213aba0_0, v0x213ae90_0, v0x213ade0_0, v0x213ad00_0, v0x213ac50_0, v0x213af10_0;
+    %set/v v0x213ab00_0, 1, 1;
+    %set/v v0x213aba0_0, 0, 1;
+    %set/v v0x213ae90_0, 2, 1;
+    %set/v v0x213ade0_0, 0, 1;
+    %set/v v0x213ad00_0, 2, 1;
+    %set/v v0x213ac50_0, 2, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 30 "$display", "  %b    %b    |   %b   %b   %b   %b |  %b  | 0", v0x213ab00_0, v0x213aba0_0, v0x213ae90_0, v0x213ade0_0, v0x213ad00_0, v0x213ac50_0, v0x213af10_0;
+    %set/v v0x213ab00_0, 1, 1;
+    %set/v v0x213aba0_0, 0, 1;
+    %set/v v0x213ae90_0, 2, 1;
+    %set/v v0x213ade0_0, 1, 1;
+    %set/v v0x213ad00_0, 2, 1;
+    %set/v v0x213ac50_0, 2, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 33 "$display", "  %b    %b    |   %b   %b   %b   %b |  %b  | 1", v0x213ab00_0, v0x213aba0_0, v0x213ae90_0, v0x213ade0_0, v0x213ad00_0, v0x213ac50_0, v0x213af10_0;
+    %set/v v0x213ab00_0, 1, 1;
+    %set/v v0x213aba0_0, 1, 1;
+    %set/v v0x213ae90_0, 0, 1;
+    %set/v v0x213ade0_0, 2, 1;
+    %set/v v0x213ad00_0, 2, 1;
+    %set/v v0x213ac50_0, 2, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 36 "$display", "  %b    %b    |   %b   %b   %b   %b |  %b  | 0", v0x213ab00_0, v0x213aba0_0, v0x213ae90_0, v0x213ade0_0, v0x213ad00_0, v0x213ac50_0, v0x213af10_0;
+    %set/v v0x213ab00_0, 1, 1;
+    %set/v v0x213aba0_0, 1, 1;
+    %set/v v0x213ae90_0, 1, 1;
+    %set/v v0x213ade0_0, 2, 1;
+    %set/v v0x213ad00_0, 2, 1;
+    %set/v v0x213ac50_0, 2, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 39 "$display", "  %b    %b    |   %b   %b   %b   %b |  %b  | 1", v0x213ab00_0, v0x213aba0_0, v0x213ae90_0, v0x213ade0_0, v0x213ad00_0, v0x213ac50_0, v0x213af10_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "./multiplexer.v";
+    "multiplexer.t.v";
