@@ -1,3 +1,10 @@
+`define NOT not #50
+`define AND and #50
+`define NAND nand #50
+`define OR or #50
+`define NOR nor #50
+`define XOR xor #50
+
 // Multiplexer circuit
 
 module behavioralMultiplexer
@@ -12,13 +19,17 @@ module behavioralMultiplexer
     assign out = inputs[address];
 endmodule
 
+`include "twoInputMultiplexer.v"
 
 module structuralMultiplexer
 (
-    output out,
-    input address0, address1,
-    input in0, in1, in2, in3
+  output out,
+  input address0, address1,
+  input in0, in1, in2, in3
 );
-    // Your multiplexer code here
-endmodule
 
+  wire topOut, bottomOut;
+  twoInputMultiplexer top(address0, in0, in1, topOut);
+  twoInputMultiplexer bottom(address0, in2, in3, bottomOut);
+  twoInputMultiplexer merge(address1, topOut, bottomOut, out);
+endmodule
