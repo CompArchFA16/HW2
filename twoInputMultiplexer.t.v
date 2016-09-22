@@ -10,6 +10,10 @@ module testTwoInputMultiplexer();
   twoInputMultiplexer dut(addr0, in0, in1, out);
 
   initial begin
+
+    $dumpfile("twoInputMultiplexer.vcd");
+    $dumpvars;
+
     $display("addr0 in0 in1 | out | Expected output");
     addr0 = 0; in0 = 0; in1 = 0; #1000
     $display("    %b   %b   %b |   %b | 0", addr0, in0, in1, out);

@@ -13,8 +13,8 @@ module testMultiplexer ();
 
   initial begin
 
-    // $dumpfile("multiplexer.vcd");
-    // $dumpvars;
+    $dumpfile("multiplexer.vcd");
+    $dumpvars;
 
     $display("addr1 addr0 in0 in1 in2 in3 | out | Expected output");
     addr0 = 0; addr1 = 0; in0 = 0; in1 = 1'bX; in2 = 1'bX; in3 = 1'bX; #1000

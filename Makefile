@@ -1,6 +1,6 @@
-build: build-decoder build-multiplexer build-adder
-
 run: run-decoder run-multiplexer run-adder
+
+build: build-decoder build-multiplexer build-adder
 
 clean:
 	rm *.o *.vcd
