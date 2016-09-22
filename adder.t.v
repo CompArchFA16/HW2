@@ -11,6 +11,9 @@ module testFullAdder();
 
     initial begin
     
+    $dumpfile("adder.vcd");
+    $dumpvars;
+
     $display("A  B  Cin | Sum  Cout | Expected Output");
     a=0; b=0; carryin=0; #1000
     $display("%b  %b  %b   | %b    %b    | 0   0", a, b, carryin, sum, carryout);

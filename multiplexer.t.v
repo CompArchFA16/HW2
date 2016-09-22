@@ -12,6 +12,10 @@ module testMultiplexer ();
     structuralMultiplexer multiplexer (out, address0, address1, in0, in1, in2, in3);
 
     initial begin
+
+    $dumpfile("multiplexer.vcd");
+    $dumpvars;
+
     in0=1'bx; in1=1'bx; in2=1'bx; in3=1'bx; #1000
 
     $display("a0 a1 | in0 in1 in2 in3 | out | Expected Output");
