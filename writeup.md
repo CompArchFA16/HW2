@@ -15,7 +15,7 @@ En A0 A1| O0 O1 O2 O3 | Expected Output
 1  1  1 |  0  0  0  1 | O3 Only
 ```
 ### Waveforms
-![Decoder Waveforms](decoder.png"Decoder Waveforms")
+![Decoder Waveforms](decoder.png "Decoder Waveforms")
 
 
 ## Multiplexer
@@ -32,7 +32,7 @@ A0 A1 | I0 I1 I2 I3| Out | Expected Output
 1  1  | x  x  x  1 |   1 | 1 
 ```
 ### Waveforms
-![Multiplexer Waveforms](multiplexer.png"Multiplexer Waveforms")
+![Multiplexer Waveforms](multiplexer.png "Multiplexer Waveforms")
 
 
 ## Adder
@@ -49,4 +49,4 @@ A  B  CI | Sum CO | Sum CO (Expected Output)
 1  1  1  |   1  1 | 1   1
 ```
 ### Waveforms
-![Adder Waveforms](adder.png"Adder Waveforms")
+![Adder Waveforms](adder.png "Adder Waveforms")
