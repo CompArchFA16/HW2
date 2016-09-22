@@ -53,6 +53,8 @@ Please submit:
 2. Your writeup as a PDF or Markdown file
 3. The scripts you used to run the tests
 
+Push the work to your repo, then submit a pull request to the course repo (CompArchFA16/HW2) for us to respond to with feedback.
+
 ## Hints / Tricks
 
 ### Gate delays
