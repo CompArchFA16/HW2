@@ -1,3 +1,7 @@
+`define AND and #50
+`define XOR xor #50
+`define OR or #50
+
 // Adder circuit
 
 module behavioralFullAdder
@@ -22,11 +26,11 @@ module structuralFullAdder
 );
     wire AxorB, AandB, CinandAxorB;
 
-    xor xorgate(AxorB, a, b);
-    and andgate(AandB, a, b);
-    and andgate(CinandAxorB, carryin, AxorB);
-    or orgate(carryout, CinandAxorB, AandB);
+    `XOR xorgate(AxorB, a, b);
+    `AND andgate(AandB, a, b);
+    `AND andgate(CinandAxorB, carryin, AxorB);
+    `OR orgate(carryout, CinandAxorB, AandB);
 
-    xor xorgate(sum, AxorB, carryin);
+    `XOR xorgate(sum, AxorB, carryin);
 
 endmodule

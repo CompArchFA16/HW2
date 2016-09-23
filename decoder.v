@@ -1,3 +1,6 @@
+`define NOT not #50
+`define AND and #50
+
 // Decoder circuit
 
 module behavioralDecoder
@@ -20,17 +23,18 @@ module structuralDecoder
     wire nAddr0, nAddr1;
     wire nAandnB, nAandB, AandnB, AandB;
 
-    not notgate(nAddr0, addr0);
-    not notgate(nAddr1, addr1);
+    `NOT notgate(nAddr0, addr0);
+    `NOT notgate(nAddr1, addr1);
 
-    and andgate(nAandnB, nAddr0, nAddr1);
-    and andgate(nAandB, nAddr0, addr1);
-    and andgate(AandnB, addr0, nAddr1);
-    and andgate(AandB, addr0, addr1);
+    `AND andgate(nAandnB, nAddr0, nAddr1);
+    `AND andgate(nAandB, nAddr0, addr1);
+    `AND andgate(AandnB, addr0, nAddr1);
+    `AND andgate(AandB, addr0, addr1);
 
-    and andgate(out0, enable, nAandnB);
-    and andgate(out1, enable, AandnB);
-    and andgate(out2, enable, nAandB);
-    and andgate(out3, enable, AandB);
+    `AND andgate(out0, enable, nAandnB);
+    `AND andgate(out1, enable, AandnB);
+    `AND andgate(out2, enable, nAandB);
+    `AND andgate(out3, enable, AandB);
+    
 endmodule
 

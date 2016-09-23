@@ -7,7 +7,8 @@ module testMultiplexer ();
 	reg in0, in1, in2, in3;
 	wire out;
 
-	behavioralMultiplexer multiplexer (out, addr0, addr1, in0,in1,in2,in3);
+	//behavioralMultiplexer multiplexer (out, addr0, addr1, in0,in1,in2,in3);
+	structuralMultiplexer multiplexer (out, addr0, addr1, in0,in1,in2,in3);
 
 	initial begin
 
