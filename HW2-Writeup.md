@@ -19,7 +19,7 @@ En A0 A1| O0 O1 O2 O3 | Expected Output
 
 The waveform for the decoder is here, and you can see the 50 unit time delay in the output.
 
-![Decoder waveform](img/decoderwave.PNG)
+![Decoder waveform](img/decoderwave.png)
 
 ## Multiplexer
 
@@ -98,7 +98,7 @@ in0 in1 in2 in3 s0 s1 | out | Expected Output
 
 The waveform for the multiplexer is here, and you can see the 50 unit time delay in the output.
 
-![Multiplexer waveform](img/multiplexerdelay.PNG)
+![Multiplexer waveform](img/multiplexerdelay.png)
 
 ## Adder
 
@@ -118,4 +118,4 @@ a b Cin| sum Cout | Expected Output
 
 The waveform for the adder is here, and you can see the 50 unit time delay in the output.
 
-![Adder waveform](img/adder.PNG)
+![Adder waveform](img/adder.png)
