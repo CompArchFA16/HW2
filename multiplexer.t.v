@@ -12,6 +12,9 @@ module testMultiplexer ();
 
 	initial begin
 
+	$dumpfile("multiplexer.vcd");
+	$dumpvars;
+
 	$display("S1 S0 | A0 A1 A2 A3 | Out | Expected Out");
 
 	// 00 - in0
