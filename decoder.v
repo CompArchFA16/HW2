@@ -18,11 +18,10 @@ module structuralDecoder
     input enable
 );
     wire nAddr0, nAddr1;
-
     wire nAandnB, nAandB, AandnB, AandB;
 
-    not addr0Inv(nAddr0, addr0);
-    not addr1Inv(nAddr1, addr1);
+    not notgate(nAddr0, addr0);
+    not notgate(nAddr1, addr1);
 
     and andgate(nAandnB, nAddr0, nAddr1);
     and andgate(nAandB, nAddr0, addr1);
