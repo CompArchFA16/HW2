@@ -1,0 +1,93 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x2756f40 .scope module, "structuralFullAdder" "structuralFullAdder" 2 15;
+ .timescale -9 -12;
+v0x274b630_0 .net "a", 0 0, C4<z>; 0 drivers
+v0x2772800_0 .net "b", 0 0, C4<z>; 0 drivers
+v0x27728a0_0 .net "carryin", 0 0, C4<z>; 0 drivers
+v0x2772940_0 .net "carryout", 0 0, C4<z>; 0 drivers
+v0x27729f0_0 .net "sum", 0 0, C4<z>; 0 drivers
+S_0x2757030 .scope module, "testFullAdder" "testFullAdder" 3 5;
+ .timescale -9 -12;
+v0x2773530_0 .var "a", 0 0;
+v0x27735d0_0 .var "b", 0 0;
+v0x2773680_0 .var "carryin", 0 0;
+v0x2773730_0 .net "carryout", 0 0, L_0x27738c0; 1 drivers
+v0x2773810_0 .net "sum", 0 0, L_0x2773960; 1 drivers
+S_0x2772a90 .scope module, "adder" "behavioralFullAdder" 3 9, 2 3, S_0x2757030;
+ .timescale -9 -12;
+v0x2772b80_0 .net *"_s10", 0 0, C4<0>; 1 drivers
+v0x2772c40_0 .net *"_s11", 1 0, L_0x2773d60; 1 drivers
+v0x2772ce0_0 .net *"_s13", 1 0, L_0x2773f70; 1 drivers
+v0x2772d80_0 .net *"_s16", 0 0, C4<0>; 1 drivers
+v0x2772e30_0 .net *"_s17", 1 0, L_0x2774130; 1 drivers
+v0x2772ed0_0 .net *"_s3", 1 0, L_0x2773aa0; 1 drivers
+v0x2772fb0_0 .net *"_s6", 0 0, C4<0>; 1 drivers
+v0x2773050_0 .net *"_s7", 1 0, L_0x2773be0; 1 drivers
+v0x2773140_0 .net "a", 0 0, v0x2773530_0; 1 drivers
+v0x27731e0_0 .net "b", 0 0, v0x27735d0_0; 1 drivers
+v0x27732e0_0 .net "carryin", 0 0, v0x2773680_0; 1 drivers
+v0x2773380_0 .alias "carryout", 0 0, v0x2773730_0;
+v0x2773490_0 .alias "sum", 0 0, v0x2773810_0;
+L_0x27738c0 .part L_0x2774130, 1, 1;
+L_0x2773960 .part L_0x2774130, 0, 1;
+L_0x2773aa0 .concat [ 1 1 0 0], v0x2773530_0, C4<0>;
+L_0x2773be0 .concat [ 1 1 0 0], v0x27735d0_0, C4<0>;
+L_0x2773d60 .arith/sum 2, L_0x2773aa0, L_0x2773be0;
+L_0x2773f70 .concat [ 1 1 0 0], v0x2773680_0, C4<0>;
+L_0x2774130 .arith/sum 2, L_0x2773d60, L_0x2773f70;
+    .scope S_0x2757030;
+T_0 ;
+    %vpi_call 3 13 "$display", "A  B Ci |  S Co  | Expected Output";
+    %set/v v0x2773530_0, 0, 1;
+    %set/v v0x27735d0_0, 0, 1;
+    %set/v v0x2773680_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 16 "$display", "%b  %b  %b |  %b  %b  |  0  0  ", v0x2773530_0, v0x27735d0_0, v0x2773680_0, v0x2773810_0, v0x2773730_0;
+    %set/v v0x2773530_0, 0, 1;
+    %set/v v0x27735d0_0, 0, 1;
+    %set/v v0x2773680_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 19 "$display", "%b  %b  %b |  %b  %b  |  1  0  ", v0x2773530_0, v0x27735d0_0, v0x2773680_0, v0x2773810_0, v0x2773730_0;
+    %set/v v0x2773530_0, 1, 1;
+    %set/v v0x27735d0_0, 0, 1;
+    %set/v v0x2773680_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 22 "$display", "%b  %b  %b |  %b  %b  |  1  0  ", v0x2773530_0, v0x27735d0_0, v0x2773680_0, v0x2773810_0, v0x2773730_0;
+    %set/v v0x2773530_0, 1, 1;
+    %set/v v0x27735d0_0, 0, 1;
+    %set/v v0x2773680_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 25 "$display", "%b  %b  %b |  %b  %b  |  0  1  ", v0x2773530_0, v0x27735d0_0, v0x2773680_0, v0x2773810_0, v0x2773730_0;
+    %set/v v0x2773530_0, 0, 1;
+    %set/v v0x27735d0_0, 1, 1;
+    %set/v v0x2773680_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 28 "$display", "%b  %b  %b |  %b  %b  |  1  0  ", v0x2773530_0, v0x27735d0_0, v0x2773680_0, v0x2773810_0, v0x2773730_0;
+    %set/v v0x2773530_0, 0, 1;
+    %set/v v0x27735d0_0, 1, 1;
+    %set/v v0x2773680_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 31 "$display", "%b  %b  %b |  %b  %b  |  0  1  ", v0x2773530_0, v0x27735d0_0, v0x2773680_0, v0x2773810_0, v0x2773730_0;
+    %set/v v0x2773530_0, 1, 1;
+    %set/v v0x27735d0_0, 1, 1;
+    %set/v v0x2773680_0, 0, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 34 "$display", "%b  %b  %b |  %b  %b  |  0  1  ", v0x2773530_0, v0x27735d0_0, v0x2773680_0, v0x2773810_0, v0x2773730_0;
+    %set/v v0x2773530_0, 1, 1;
+    %set/v v0x27735d0_0, 1, 1;
+    %set/v v0x2773680_0, 1, 1;
+    %delay 1000000, 0;
+    %vpi_call 3 37 "$display", "%b  %b  %b |  %b  %b  |  1  1  ", v0x2773530_0, v0x27735d0_0, v0x2773680_0, v0x2773810_0, v0x2773730_0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "./adder.v";
+    "adder.t.v";
