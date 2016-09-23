@@ -98,7 +98,7 @@ in0 in1 in2 in3 s0 s1 | out | Expected Output
 
 The waveform for the multiplexer is here, and you can see the 50 unit time delay in the output.
 
-![Multiplexer waveform](img/multiplexerdelay.png)
+![Multiplexer waveform](img/multiplexerwdelay.png)
 
 ## Adder
 
