@@ -1,0 +1,55 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xa51160 .scope module, "behavioralMultiplexer" "behavioralMultiplexer" 2 3;
+ .timescale 0 0;
+v0xa749d0_0 .net "address", 1 0, L_0xa87b60; 1 drivers
+v0xa867e0_0 .net "address0", 0 0, C4<z>; 0 drivers
+v0xa86880_0 .net "address1", 0 0, C4<z>; 0 drivers
+v0xa86920_0 .net "in0", 0 0, C4<z>; 0 drivers
+v0xa869d0_0 .net "in1", 0 0, C4<z>; 0 drivers
+v0xa86a70_0 .net "in2", 0 0, C4<z>; 0 drivers
+v0xa86b50_0 .net "in3", 0 0, C4<z>; 0 drivers
+v0xa86bf0_0 .net "inputs", 3 0, L_0xa879d0; 1 drivers
+v0xa86ce0_0 .net "out", 0 0, L_0xa87c90; 1 drivers
+L_0xa879d0 .concat [ 1 1 1 1], C4<z>, C4<z>, C4<z>, C4<z>;
+L_0xa87b60 .concat [ 1 1 0 0], C4<z>, C4<z>;
+L_0xa87c90 .part/v L_0xa879d0, L_0xa87b60, 1;
+S_0xa507d0 .scope module, "structuralMultiplexer" "structuralMultiplexer" 2 16;
+ .timescale 0 0;
+L_0xa873f0 .functor NOT 1, C4<z>, C4<0>, C4<0>, C4<0>;
+L_0xa87db0 .functor NOT 1, C4<z>, C4<0>, C4<0>, C4<0>;
+L_0xa87e70 .functor AND 1, L_0xa873f0, L_0xa87db0, C4<1>, C4<1>;
+L_0xa87fa0 .functor AND 1, C4<z>, L_0xa87db0, C4<1>, C4<1>;
+L_0xa88050 .functor AND 1, L_0xa873f0, C4<z>, C4<1>, C4<1>;
+L_0xa88100 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_0xa88160 .functor AND 1, L_0xa88100, C4<z>, C4<1>, C4<1>;
+L_0xa88210 .functor AND 1, L_0xa88050, C4<z>, C4<1>, C4<1>;
+L_0xa88340 .functor AND 1, L_0xa87fa0, C4<z>, C4<1>, C4<1>;
+L_0xa88420 .functor AND 1, L_0xa87e70, C4<z>, C4<1>, C4<1>;
+L_0xa88560 .functor OR 1, L_0xa88160, L_0xa88210, L_0xa88340, L_0xa88420;
+v0xa86d80_0 .net "address0", 0 0, C4<z>; 0 drivers
+v0xa86e40_0 .net "address1", 0 0, C4<z>; 0 drivers
+v0xa86ee0_0 .net "in0", 0 0, C4<z>; 0 drivers
+v0xa86f80_0 .net "in1", 0 0, C4<z>; 0 drivers
+v0xa87000_0 .net "in2", 0 0, C4<z>; 0 drivers
+v0xa870a0_0 .net "in3", 0 0, C4<z>; 0 drivers
+v0xa87140_0 .net "naddress0", 0 0, L_0xa873f0; 1 drivers
+v0xa871e0_0 .net "naddress1", 0 0, L_0xa87db0; 1 drivers
+v0xa872d0_0 .net "o0", 0 0, L_0xa88100; 1 drivers
+v0xa87370_0 .net "o1", 0 0, L_0xa88050; 1 drivers
+v0xa87470_0 .net "o2", 0 0, L_0xa87fa0; 1 drivers
+v0xa87510_0 .net "o3", 0 0, L_0xa87e70; 1 drivers
+v0xa87620_0 .net "out", 0 0, L_0xa88560; 1 drivers
+v0xa876c0_0 .net "out0", 0 0, L_0xa88160; 1 drivers
+v0xa877e0_0 .net "out1", 0 0, L_0xa88210; 1 drivers
+v0xa87880_0 .net "out2", 0 0, L_0xa88340; 1 drivers
+v0xa87740_0 .net "out3", 0 0, L_0xa88420; 1 drivers
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "multiplexer.v";
