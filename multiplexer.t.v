@@ -1,6 +1,9 @@
 // Multiplexer testbench
 `timescale 1 ns / 1 ps
 `include "multiplexer.v"
+`define AND and #50
+`define OR or #50
+`define NOT not #50
 
 module testMultiplexer (); 
   reg addr0, addr1; //select inputs
