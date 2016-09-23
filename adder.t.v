@@ -9,7 +9,9 @@ module testFullAdder();
     // behavioralFullAdder adder (sum, carryout, a, b, carryin);
     structuralFullAdder adder (sum, carryout, a, b, carryin);
     initial begin
-
+    $dumpfile("fullAdder.vcd");
+    $dumpvars;
+    
     $display("A  B  CarryIn | Sum  CarryOut | Expected Output");
     a=0;b=0;carryin=0; #1000
     $display("%b  %b    %b     | %b     %b       | 0   0", a, b, carryin, sum, carryout);
@@ -28,8 +30,7 @@ module testFullAdder();
     a=1;b=1;carryin=1; #1000
     $display("%b  %b    %b     | %b     %b       | 1   1", a, b, carryin, sum, carryout);
     
-    $dumpfile("fullAdder.vcd");
-    $dumpvars;
+    
 
     end
 endmodule
