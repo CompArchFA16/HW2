@@ -1,0 +1,109 @@
+Decoder - given test bench output
+En A0 A1| O0 O1 O2 O3 | Expected Output
+0  0  0 |  0  0  0  0 | All false
+0  1  0 |  0  0  0  0 | All false
+0  0  1 |  0  0  0  0 | All false
+0  1  1 |  0  0  0  0 | All false
+1  0  0 |  1  0  0  0 | O0 Only
+1  1  0 |  0  1  0  0 | O1 Only
+1  0  1 |  0  0  1  0 | O2 Only
+1  1  1 |  0  0  0  1 | O3 Only
+
+Decoder - test bench output to made device
+En A1 A0| O0 O1 O2 O3 | Expected Output
+0  0  0 |  0  0  0  0 | All false
+0  1  0 |  0  0  0  0 | All false
+0  0  1 |  0  0  0  0 | All false
+0  1  1 |  0  0  0  0 | All false
+1  0  0 |  1  0  0  0 | O0 Only
+1  1  0 |  0  1  0  0 | O1 Only
+1  0  1 |  0  0  1  0 | O2 Only
+1  1  1 |  0  0  0  1 | O3 Only
+
+Adder - test bench output to given device
+A B Cin | Cout Sum | Expected Output
+0  0  0 |  0  0  | Remainder 0 Sum 0
+0  0  1 |  0  1  | Remainder 0 Sum 1
+0  1  0 |  0  1  | Remainder 0 Sum 1
+0  1  1 |  1  0  | Remainder 1 Sum 0
+1  0  0 |  0  1  | Remainder 0 Sum 1
+1  0  1 |  1  0  | Remainder 1 Sum 0
+1  1  0 |  1  0  | Remainder 1 Sum 0
+1  1  1 |  1  1  | Remainder 1 Sum 1
+
+Adder - test bench output to made device
+A B Cin | Cout Sum | Expected Output
+0  0  0 |  0  0  | Remainder 0 Sum 0
+0  0  1 |  0  1  | Remainder 0 Sum 1
+0  1  0 |  0  1  | Remainder 0 Sum 1
+0  1  1 |  1  0  | Remainder 1 Sum 0
+1  0  0 |  0  1  | Remainder 0 Sum 1
+1  0  1 |  1  0  | Remainder 1 Sum 0
+1  1  0 |  1  0  | Remainder 1 Sum 0
+1  1  1 |  1  1  | Remainder 1 Sum 1st
+
+Multiplexer - test bench output to given device
+A1 A0 | 00 01 02 03 | Out | Expected outcome
+0  0 | 1  0  0  0 | 1 | 1 
+0  0 | 0  0  0  0 | 0 | 0 
+0  0 | 0  1  0  0 | 0 | 0 
+0  0 | 0  0  1  0 | 0 | 0 
+0  0 | 1  0  0  1 | 1 | 1 
+0  1 | 0  1  0  0 | 1 | 1 
+0  1 | 0  0  0  0 | 0 | 0 
+0  1 | 1  0  0  0 | 0 | 0 
+0  1 | 0  0  1  0 | 0 | 0 
+0  1 | 0  1  0  1 | 1 | 1 
+1  0 | 0  0  1  0 | 1 | 1 
+1  0 | 0  0  0  0 | 0 | 0 
+1  0 | 1  0  0  0 | 0 | 0 
+1  0 | 0  1  0  0 | 0 | 0 
+1  0 | 1  0  1  1 | 1 | 1 
+1  1 | 0  0  0  1 | 1 | 1 
+1  1 | 1  0  0  0 | 0 | 0 
+1  1 | 0  1  0  0 | 0 | 0 
+1  1 | 1  0  1  1 | 1 | 1 
+
+Multiplexer - test bench output to made device 
+A1 A0 | 00 01 02 03 | Out | Expected outcome
+0  0 | 1  0  0  0 | 1 | 1 
+0  0 | 0  0  0  0 | 0 | 0 
+0  0 | 0  1  0  0 | 0 | 0 
+0  0 | 0  0  1  0 | 0 | 0 
+0  0 | 1  0  0  1 | 1 | 1 
+0  1 | 0  1  0  0 | 1 | 1 
+0  1 | 0  0  0  0 | 0 | 0 
+0  1 | 1  0  0  0 | 0 | 0 
+0  1 | 0  0  1  0 | 0 | 0 
+0  1 | 0  1  0  1 | 1 | 1 
+1  0 | 0  0  1  0 | 1 | 1 
+1  0 | 0  0  0  0 | 0 | 0 
+1  0 | 1  0  0  0 | 0 | 0 
+1  0 | 0  1  0  0 | 0 | 0 
+1  0 | 1  0  1  1 | 1 | 1 
+1  1 | 0  0  0  1 | 1 | 1 
+1  1 | 1  0  0  0 | 0 | 0 
+1  1 | 0  1  0  0 | 0 | 0 
+1  1 | 1  0  1  1 | 1 | 1
+
+
+A1 A0 | 00 01 02 03 | Out | Expected outcome
+0  0 | 1  0  0  0 | 1 | 1 
+0  0 | 0  0  0  0 | 0 | 0 
+0  0 | 0  1  0  0 | 0 | 0 
+0  0 | 0  0  1  0 | 0 | 0 
+0  0 | 0  0  0  1 | 0 | 0 
+0  1 | 0  1  0  0 | 1 | 1 
+0  1 | 0  0  0  0 | 0 | 0 
+0  1 | 1  0  0  0 | 0 | 0 
+0  1 | 0  0  1  0 | 0 | 0 
+0  1 | 0  0  0  1 | 0 | 0 
+1  0 | 0  0  1  0 | 1 | 1 
+1  0 | 0  0  0  0 | 0 | 0 
+1  0 | 1  0  0  0 | 0 | 0 
+1  0 | 0  1  0  0 | 0 | 0 
+1  0 | 1  0  0  1 | 0 | 0 
+1  1 | 0  0  0  1 | 1 | 1 
+1  1 | 1  0  0  0 | 0 | 0 
+1  1 | 0  1  0  0 | 0 | 0 
+1  1 | 1  0  1  0 | 0 | 0 
