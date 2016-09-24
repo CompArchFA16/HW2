@@ -12,6 +12,10 @@ module testFullAdder();
 
     initial begin
         // Your test code here
+
+    $dumpfile("adder.vcd");
+    $dumpvars;
+       
     $display("A  B  Cin | Cout  S | Expected Output");
 
     a=0;b=0;carryin=0; #1000
