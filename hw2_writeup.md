@@ -3,6 +3,7 @@
 ---
 ## 2-bit Decoder with Enable
 
+```
 En A0 A1| O0 O1 O2 O3 | Expected Output
 0  0  0 |  0  0  0  0 | All false
 0  1  0 |  0  0  0  0 | All false
@@ -12,12 +13,13 @@ En A0 A1| O0 O1 O2 O3 | Expected Output
 1  1  0 |  0  1  0  0 | O1 Only
 1  0  1 |  0  0  1  0 | O2 Only
 1  1  1 |  0  0  0  1 | O3 Only
+```
 
 ![Decoder Wave](decoder_wave.png)
 
 ---
 ## Four Input Multiplexer
-
+```
 A0 A1 | In0 In1 In2 In3 | Out0 | Expected Output
 1  1  | 0  0  0  0  | 0 | 0
 1  1  | 0  0  0  1  | 1 | 1
@@ -86,14 +88,14 @@ A0 A1 | In0 In1 In2 In3 | Out3 | Expected Output
 0  0  | 1  0  1  0  | 1 | 1
 0  0  | 1  1  1  0  | 1 | 1
 0  0  | 1  1  0  0  | 1 | 1
-
-
+```
 
 ![Multiplexer Wave](multiplexer_wave.png)
 
 ---
 ## 1-bit Full Adder
 
+```
 A B Cin | S Cout | Expected Output
 1  1  1 |  1  1 | 1 1
 1  1  0 |  0  1 | 0 1
@@ -103,5 +105,6 @@ A B Cin | S Cout | Expected Output
 0  1  0 |  1  0 | 1 0
 0  0  1 |  1  0 | 1 0
 0  0  0 |  0  0 | 0 0
+```
 
 ![Adder Wave](adder_wave.png)
